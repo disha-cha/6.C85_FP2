@@ -307,12 +307,7 @@ function updateScatter() {
     .style('cursor', 'pointer')
     .on('mousemove', showTooltip)
     .on('mouseleave', hideTooltip)
-    .on('click', (event, d) => {
-      if (highlightedTracts.has(d.label)) highlightedTracts.delete(d.label);
-      else highlightedTracts.add(d.label);
-      resetBtn.classList.toggle('on', highlightedTracts.size > 0);
-      refreshDots();
-    });
+    ;
 
   // Axes
   const axStyle = g => {
@@ -365,12 +360,6 @@ function refreshDots() {
       highlightedTracts.has(d.label) ? 1.5 : 0.5);
 }
 
-// ── RESET ─────────────────────────────────────────────────────────────
-resetBtn.addEventListener('click', () => {
-  highlightedTracts.clear();
-  resetBtn.classList.remove('on');
-  refreshDots();
-});
 
 // ── INIT + RESIZE ──────────────────────────────────────────────────────
 buildCorrChart();
